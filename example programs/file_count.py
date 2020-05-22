@@ -16,7 +16,8 @@ import os
 
 
 def file_count(preFile, index):
-    file = open(os.path.join(sys.path[0], str(preFile[index])), "r")
+    # print(preFile)
+    file = open(os.path.join(sys.path[0], str(preFile)), "r")
     #print(os.path.join(sys.path[0], str(preFile[0])))
     data = file.read()
     lineFile = data.split("\n")
@@ -25,15 +26,16 @@ def file_count(preFile, index):
         if i:
             count += 1
     result = (str(count), "\t", str(len(data.split())),
-              "\t", str(len(data)), "\t", str(preFile[0])[:-3])
+              "\t", str(len(data)), "\t", str(preFile)[:-3])
     file.close()
     return result
 
 
 def main(*args):
-    for i, value in enumerate(args):
+    #    print(args)
+    for i, value in enumerate(args[0]):
         print(''.join(file_count(value, i)))
 
 
 if __name__ == "__main__":
-    main(sys.argv[2:])
+    main(sys.argv[1:])
